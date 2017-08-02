@@ -2,6 +2,8 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    puts "Send email to #{current_user.email} for Order# #{@order.id}"
+    UserMailer.order_confirmation(current_user, @order).deliver_now
   end
 
   def create
