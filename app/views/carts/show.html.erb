@@ -1,5 +1,12 @@
 <section class="cart-show">
-
+<% if cart == {}%>
+    <header class="page-header">
+    <h1>The cart is empty.</h1>
+  </header>
+  <div>
+    <%= link_to 'Return to the Jungle', :root, :class => "btn btn-primary btn-lg" %>
+  </div>
+<% else %>
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
@@ -49,5 +56,6 @@
       <% end %>
     </div>
   </div>
+<% end %>
 
 </section>
