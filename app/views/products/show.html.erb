@@ -33,7 +33,15 @@
         </dl>
       </div>
     </div>
-
+    <div>
+      <%= form_for [@product, @review] do |f| %>
+        Rating: <%= select_tag(:rating, options_for_select([
+          ['Great', 1], ['Good', 2], ['Satisfactory', 3],['Not so good', 4],['Terrible', 5]])) %>
+        Description: <%= f.text_field :description %><br />
+        <%= f.submit %>
+      <% end %>
+    </div>
   </article>
 
 </section>
+
