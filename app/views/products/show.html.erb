@@ -35,15 +35,14 @@
             <dd><div><%= f.text_field :description, class: 'form-control' %></div> <%= f.submit 'Create Review', class: 'btn btn-primary form-control' %></dd>
             <% end %>
             <% end %>
-   </dl>
+        </dl>
       </div>
-            <div class="col-sm-8">
+        <div class="col-sm-8">
         <dl class="dl-horizontal">
-            <% @product.reviews.reverse_each do |review| %>
-              <%= render 'review', review: review %>
-     
-      <% end %>
-    </div>
+          <% @product.reviews.reverse_each do |review| %>
+            <%= render 'review', review: review %>
+          <% end %>
+      </div>
 
   </article>
 
