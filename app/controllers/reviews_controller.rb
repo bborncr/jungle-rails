@@ -1,17 +1,24 @@
 class ReviewsController < ApplicationController
 
   def create
-    p = Product.find params[:product_id]
+    @product = Product.find params[:product_id]
 
-    review_data = review_params
-    @review = p.reviews.new(review_data.merge({
-      user: current_user
-    }))
+    @review = @product.reviews.new(review_params)
+
+    # Add the user_id or it will fail
+    @review.user_id = current_user.id
+
     if @review.save
-      redirect_to :back
+      redirect_to @product, notice: 'Review was successfully created.'
     else
-      redirect_to :back
+      redirect_to @product, notice: "Review couldn't be saved. #{@review.errors.full_messages}"
     end
+  end
+
+  def destroy
+    @review = Review.find params[:id]
+    @review.destroy
+    redirect_to :back
   end
 
   private
@@ -19,9 +26,7 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(
       :rating,
-      :description,
-      :user_id,
-      :product_id
+      :description
     )
   end
 

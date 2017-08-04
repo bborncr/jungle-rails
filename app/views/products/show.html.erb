@@ -27,6 +27,7 @@
 
       <div class="col-sm-8">
         <dl class="dl-horizontal">
+          <p id="notice"><%= notice %></p>
                 <% if current_user %>
             <%= form_for [@product, @review] do |f| %>
             <dt>Rating</dt>

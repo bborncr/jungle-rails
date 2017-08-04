@@ -1,6 +1,9 @@
 <br>
 <dt>Rating</dt>
-<dd><%= review.rating %></dd>
+<dd><%= review.rating %>  
+  <% if current_user && current_user.id == review.user.id %>
+  <%= link_to 'Delete',  review, method: :delete, data: { confirm: 'Are you sure?' } %></dd>
+  <% end %>
 <dt>Description</dt>
 <dd><%= review.description %></dd>
 <dt>User</dt>

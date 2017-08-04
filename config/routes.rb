@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
+  resources :reviews, only: [:destroy]
+
   resources :products, only: [:index, :show] do
     resources :reviews, only: [:create]
   end
