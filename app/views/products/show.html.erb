@@ -24,22 +24,25 @@
           <dd><%= @product.price %></dd>
         </dl>
       </div>
-    
+
       <div class="col-sm-8">
         <dl class="dl-horizontal">
-              <div>
-                <%= form_for [@product, @review] do |f| %>
-                  Rating: <%= f.select(:rating, options_for_select([
-                    ['Great', 5], ['Good', 4], ['Satisfactory', 3],['Not so good', 2],['Terrible', 1]])) %>
-                  Description: <%= f.text_field :description %><br />
-                  <%= f.submit %>
-                <% end %>
-              </div>
-          <% @product.reviews.reverse_each do |review| %>
-          <%= render 'review', review: review %>
-          <% end %>
-        </dl>
+                <% if current_user %>
+            <%= form_for [@product, @review] do |f| %>
+            <dt>Rating</dt>
+            <dd><%= f.select(:rating, options_for_select([['Great', 5], ['Good', 4], ['Satisfactory', 3],['Not so good', 2],['Terrible', 1]])) %></dd>
+            <dt>Description</dt>
+            <dd><div><%= f.text_field :description, class: 'form-control' %></div> <%= f.submit 'Create Review', class: 'btn btn-primary form-control' %></dd>
+            <% end %>
+            <% end %>
+   </dl>
       </div>
+            <div class="col-sm-8">
+        <dl class="dl-horizontal">
+            <% @product.reviews.reverse_each do |review| %>
+              <%= render 'review', review: review %>
+     
+      <% end %>
     </div>
 
   </article>
