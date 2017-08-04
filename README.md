@@ -4,7 +4,7 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 
 
 ## Screenshot
-![Screenshot](./public/jungle.png)
+![Screenshot](public/jungle.png)
 
 ## Dependencies
 
