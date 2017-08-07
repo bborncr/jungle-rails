@@ -52,6 +52,5 @@ RSpec.describe Product, type: :model do
       # expect(@product).to be_valid
       expect(@product.errors.messages[:price]).to include("can't be blank")
     end
-    
   end
 end
