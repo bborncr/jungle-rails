@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def say_hello
+    "hello"
+  end
+
   private
 
     def user_params
